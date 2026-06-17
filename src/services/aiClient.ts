@@ -112,9 +112,21 @@ export async function callDiagnosisAPI(
 ## A 方信息
 - 情绪强度：${partyAData.answers.emotionIntensity}/10
 - 情绪词：${partyAData.answers.emotionWords.join('、')}
+- 矛盾前心情：${partyAData.answers.preConflictMood}
+- 首个不舒服瞬间：${partyAData.answers.firstUncomfortableMoment}
 - 事件描述：${partyAData.answers.eventDescription}
-- 诉求：${partyAData.answers.explicitRequests}
+- 双方不妥行为：${partyAData.answers.inappropriateBehaviors}
+- 客观限制vs人为选择：${partyAData.answers.objectiveVsSubjective}
+- 底线/原则：${partyAData.answers.bottomLine}
+- 原本期待：${partyAData.answers.originalExpectation}
+- 猜测对方在意点：${partyAData.answers.guessOtherPartyCore}
+- 观念差异点：${partyAData.answers.conceptualDifferences}
+- 具体诉求（2条）：${partyAData.answers.specificActions}
+- 让步底线：${partyAData.answers.compromiseLine}
+- 希望的沟通方式：${partyAData.answers.preferredCommunicationMode}
 - 深层需求：${partyAData.answers.deepNeeds}
+- 重复矛盾遗留：${partyAData.answers.repeatedConflict}
+- 过往心结：${partyAData.answers.emotionalTrigger}
 ${partyAData.basicInfo ? `- 关系时长：${partyAData.basicInfo.relationshipDuration || '未填写'}` : ''}
 ${partyAData.basicInfo ? `- 争吵场景：${partyAData.basicInfo.conflictScene || '未填写'}` : ''}
 ${partyAData.basicInfo ? `- 是否首次：${partyAData.basicInfo.isFirstConflictOnTopic || '未填写'}` : ''}
@@ -122,14 +134,33 @@ ${partyAData.basicInfo ? `- 是否首次：${partyAData.basicInfo.isFirstConflic
 ## B 方信息
 - 情绪强度：${partyBData.answers.emotionIntensity}/10
 - 情绪词：${partyBData.answers.emotionWords.join('、')}
+- 矛盾前心情：${partyBData.answers.preConflictMood}
+- 首个不舒服瞬间：${partyBData.answers.firstUncomfortableMoment}
 - 事件描述：${partyBData.answers.eventDescription}
-- 诉求：${partyBData.answers.explicitRequests}
+- 双方不妥行为：${partyBData.answers.inappropriateBehaviors}
+- 客观限制vs人为选择：${partyBData.answers.objectiveVsSubjective}
+- 底线/原则：${partyBData.answers.bottomLine}
+- 原本期待：${partyBData.answers.originalExpectation}
+- 猜测对方在意点：${partyBData.answers.guessOtherPartyCore}
+- 观念差异点：${partyBData.answers.conceptualDifferences}
+- 具体诉求（2条）：${partyBData.answers.specificActions}
+- 让步底线：${partyBData.answers.compromiseLine}
+- 希望的沟通方式：${partyBData.answers.preferredCommunicationMode}
 - 深层需求：${partyBData.answers.deepNeeds}
+- 重复矛盾遗留：${partyBData.answers.repeatedConflict}
+- 过往心结：${partyBData.answers.emotionalTrigger}
 ${partyBData.basicInfo ? `- 关系时长：${partyBData.basicInfo.relationshipDuration || '未填写'}` : ''}
 ${partyBData.basicInfo ? `- 争吵场景：${partyBData.basicInfo.conflictScene || '未填写'}` : ''}
 ${partyBData.basicInfo ? `- 是否首次：${partyBData.basicInfo.isFirstConflictOnTopic || '未填写'}` : ''}
 
 请分析以上双方信息，返回 JSON 格式的冲突诊断结果。如果信息不足以做出完整诊断，可以设置 needFollowUp 为 true 并提出追问问题。
+
+重点关注：
+1. 双方"首个不舒服瞬间"的对比，判断触发点差异
+2. 双方"客观限制vs人为选择"的差异认知
+3. 双方"猜测对方在意点"的准确度对比
+4. "重复矛盾遗留"和"过往心结"对本次矛盾的影响
+5. 双方"让步底线"是否有交集
 
 返回格式：
 {
@@ -199,22 +230,52 @@ export async function callMediationAPI(
 - 潜在共识：${diagnosis.diagnosis.potentialConsensus}
 - 风险等级：${diagnosis.riskLevel}
 
-## A 方原始信息
+## A 方完整信息
 - 情绪强度：${partyAData.answers.emotionIntensity}/10
 - 情绪词：${partyAData.answers.emotionWords.join('、')}
+- 矛盾前心情：${partyAData.answers.preConflictMood}
+- 首个不舒服瞬间：${partyAData.answers.firstUncomfortableMoment}
 - 事件描述：${partyAData.answers.eventDescription}
-- 诉求：${partyAData.answers.explicitRequests}
+- 双方不妥行为：${partyAData.answers.inappropriateBehaviors}
+- 客观限制vs人为选择：${partyAData.answers.objectiveVsSubjective}
+- 底线/原则：${partyAData.answers.bottomLine}
+- 原本期待：${partyAData.answers.originalExpectation}
+- 猜测对方在意点：${partyAData.answers.guessOtherPartyCore}
+- 观念差异点：${partyAData.answers.conceptualDifferences}
+- 具体诉求：${partyAData.answers.specificActions}
+- 让步底线：${partyAData.answers.compromiseLine}
+- 希望的沟通方式：${partyAData.answers.preferredCommunicationMode}
 - 深层需求：${partyAData.answers.deepNeeds}
+- 重复矛盾遗留：${partyAData.answers.repeatedConflict}
+- 过往心结：${partyAData.answers.emotionalTrigger}
 
-## B 方原始信息
+## B 方完整信息
 - 情绪强度：${partyBData.answers.emotionIntensity}/10
 - 情绪词：${partyBData.answers.emotionWords.join('、')}
+- 矛盾前心情：${partyBData.answers.preConflictMood}
+- 首个不舒服瞬间：${partyBData.answers.firstUncomfortableMoment}
 - 事件描述：${partyBData.answers.eventDescription}
-- 诉求：${partyBData.answers.explicitRequests}
+- 双方不妥行为：${partyBData.answers.inappropriateBehaviors}
+- 客观限制vs人为选择：${partyBData.answers.objectiveVsSubjective}
+- 底线/原则：${partyBData.answers.bottomLine}
+- 原本期待：${partyBData.answers.originalExpectation}
+- 猜测对方在意点：${partyBData.answers.guessOtherPartyCore}
+- 观念差异点：${partyBData.answers.conceptualDifferences}
+- 具体诉求：${partyBData.answers.specificActions}
+- 让步底线：${partyBData.answers.compromiseLine}
+- 希望的沟通方式：${partyBData.answers.preferredCommunicationMode}
 - 深层需求：${partyBData.answers.deepNeeds}
+- 重复矛盾遗留：${partyBData.answers.repeatedConflict}
+- 过往心结：${partyBData.answers.emotionalTrigger}
 ${followUpSection}
 
-基于以上诊断结果和双方信息，请生成调解方案。返回 JSON 格式：
+基于以上诊断结果和双方完整信息，请生成调解方案。调解方案需重点关注：
+1. 双方让步底线是否有交集，找到可妥协空间
+2. 用双方"希望的沟通方式"指导调解建议的口吻
+3. 如有重复矛盾遗留，需明确解决遗留问题的步骤
+4. 如有过往心结，需给出心结化解的长期建议
+
+返回 JSON 格式：
 
 {
   "emotionalConsensus": "双方情绪共识",

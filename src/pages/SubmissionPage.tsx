@@ -76,16 +76,44 @@ export function SubmissionPage() {
                 <p className="font-medium text-indigo-600">{answers.emotionIntensity}/10 - {answers.emotionWords.join('、')}</p>
               </div>
               <div className="bg-slate-50 rounded-xl p-3">
+                <p className="text-slate-500">矛盾前心情</p>
+                <p className="text-slate-700">{answers.preConflictMood}</p>
+              </div>
+              <div className="bg-slate-50 rounded-xl p-3">
+                <p className="text-slate-500">首个不舒服瞬间</p>
+                <p className="text-slate-700">{answers.firstUncomfortableMoment}</p>
+              </div>
+              <div className="bg-slate-50 rounded-xl p-3">
                 <p className="text-slate-500">事件描述</p>
                 <p className="text-slate-700">{answers.eventDescription.slice(0, 100)}{answers.eventDescription.length > 100 ? '...' : ''}</p>
               </div>
               <div className="bg-slate-50 rounded-xl p-3">
-                <p className="text-slate-500">核心诉求</p>
-                <p className="text-slate-700">{answers.explicitRequests.slice(0, 100)}{answers.explicitRequests.length > 100 ? '...' : ''}</p>
+                <p className="text-slate-500">双方不妥行为</p>
+                <p className="text-slate-700">{answers.inappropriateBehaviors.slice(0, 80)}{answers.inappropriateBehaviors.length > 80 ? '...' : ''}</p>
+              </div>
+              <div className="bg-slate-50 rounded-xl p-3">
+                <p className="text-slate-500">底线/原则</p>
+                <p className="text-slate-700">{answers.bottomLine}</p>
+              </div>
+              <div className="bg-slate-50 rounded-xl p-3">
+                <p className="text-slate-500">具体诉求</p>
+                <p className="text-slate-700">{answers.specificActions}</p>
+              </div>
+              <div className="bg-slate-50 rounded-xl p-3">
+                <p className="text-slate-500">让步底线</p>
+                <p className="text-slate-700">{answers.compromiseLine}</p>
               </div>
               <div className="bg-slate-50 rounded-xl p-3">
                 <p className="text-slate-500">深层需求</p>
                 <p className="text-slate-700">{answers.deepNeeds}</p>
+              </div>
+              <div className="bg-slate-50 rounded-xl p-3">
+                <p className="text-slate-500">重复矛盾遗留</p>
+                <p className="text-slate-700">{answers.repeatedConflict}</p>
+              </div>
+              <div className="bg-slate-50 rounded-xl p-3">
+                <p className="text-slate-500">过往心结</p>
+                <p className="text-slate-700">{answers.emotionalTrigger}</p>
               </div>
             </div>
 

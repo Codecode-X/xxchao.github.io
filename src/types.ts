@@ -33,13 +33,30 @@ export interface BasicInfo {
   isFirstConflictOnTopic?: FirstConflictOption;
 }
 
-/** 四轮回答 */
+/** 五轮回答（16题） */
 export interface PartyAnswers {
+  // 一、情绪锚定（Q1-Q3）
   emotionIntensity: number;
   emotionWords: string[];
+  preConflictMood: string;
+  firstUncomfortableMoment: string;
+  // 二、客观事件还原（Q4-Q6）
   eventDescription: string;
-  explicitRequests: string;
+  inappropriateBehaviors: string;
+  objectiveVsSubjective: string;
+  // 三、分歧认知（Q7-Q10）
+  bottomLine: string;
+  originalExpectation: string;
+  guessOtherPartyCore: string;
+  conceptualDifferences: string;
+  // 四、表层诉求（Q11-Q13）
+  specificActions: string;
+  compromiseLine: string;
+  preferredCommunicationMode: string;
+  // 五、深层需求（Q14-Q16）
   deepNeeds: string;
+  repeatedConflict: string;
+  emotionalTrigger: string;
 }
 
 /** 本地会话数据 */
@@ -88,9 +105,21 @@ export interface SubmissionPayload {
   answers: {
     emotionIntensity: number;
     emotionWords: string[];
+    preConflictMood: string;
+    firstUncomfortableMoment: string;
     eventDescription: string;
-    explicitRequests: string;
+    inappropriateBehaviors: string;
+    objectiveVsSubjective: string;
+    bottomLine: string;
+    originalExpectation: string;
+    guessOtherPartyCore: string;
+    conceptualDifferences: string;
+    specificActions: string;
+    compromiseLine: string;
+    preferredCommunicationMode: string;
     deepNeeds: string;
+    repeatedConflict: string;
+    emotionalTrigger: string;
   };
   nonce: string;
 }

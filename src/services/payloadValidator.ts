@@ -31,10 +31,16 @@ export function validateSubmissionPayload(
     return { valid: false, error: '情绪强度范围无效' };
   if (!Array.isArray(answers.emotionWords) || answers.emotionWords.length === 0)
     return { valid: false, error: '情绪词缺失' };
+  if (typeof answers.preConflictMood !== 'string' || (answers.preConflictMood as string).trim().length === 0)
+    return { valid: false, error: '矛盾前心情缺失' };
+  if (typeof answers.firstUncomfortableMoment !== 'string' || (answers.firstUncomfortableMoment as string).trim().length === 0)
+    return { valid: false, error: '首个不舒服瞬间缺失' };
   if (typeof answers.eventDescription !== 'string' || (answers.eventDescription as string).trim().length === 0)
     return { valid: false, error: '事件描述缺失' };
-  if (typeof answers.explicitRequests !== 'string' || (answers.explicitRequests as string).trim().length === 0)
-    return { valid: false, error: '诉求缺失' };
+  if (typeof answers.bottomLine !== 'string' || (answers.bottomLine as string).trim().length === 0)
+    return { valid: false, error: '底线缺失' };
+  if (typeof answers.specificActions !== 'string' || (answers.specificActions as string).trim().length === 0)
+    return { valid: false, error: '具体诉求缺失' };
   if (typeof answers.deepNeeds !== 'string' || (answers.deepNeeds as string).trim().length === 0)
     return { valid: false, error: '深层需求缺失' };
   if (!p.nonce) return { valid: false, error: '缺少校验信息' };
