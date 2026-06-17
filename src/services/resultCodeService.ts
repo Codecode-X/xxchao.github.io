@@ -5,7 +5,7 @@
 import type { ResultPayload, MediationResult } from '../types';
 import { serializeResultCode, deserializeResultCode } from './payloadSerializer';
 import { validateResultPayload } from './payloadValidator';
-import { getSession } from '../services/storageService';
+import { getSession } from './storageService';
 
 /**
  * 生成结果码

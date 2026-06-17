@@ -5,7 +5,7 @@
 import type { FeedbackPayload, Role, FeedbackChoice } from '../types';
 import { serializeFeedbackCode, deserializeFeedbackCode } from './payloadSerializer';
 import { validateFeedbackPayload } from './payloadValidator';
-import { getSession } from '../services/storageService';
+import { getSession } from './storageService';
 
 /**
  * 生成反馈码
